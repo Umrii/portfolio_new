@@ -4,17 +4,21 @@ import { useEffect, useState } from "react";
 import { useCountUp } from "@/lib/useCountUp";
 
 const CODE_LINES = [
-  "# EU ETS Carbon Tracker",
-  "pipeline = (",
-  "    fetch_eex_prices()",
-  "    | clean_ohlcv()",
-  "    | compute_rolling_ma(windows=[7, 30])",
-  "    | alert_on_threshold(price=65.0)",
-  ")",
-  "pipeline.run()",
+  "# whoami",
+  "class AnasAtiq(Developer):",
+  '    role  = "Creative Problem Solver"',
+  '    loves = "turning chaos into clean systems"',
+  "",
+  "    def solve(self, problem):",
+  "        while problem.hard:",
+  "            self.learn()",
+  "            self.iterate()",
+  "        return self.ship(solution)",
+  "",
+  "AnasAtiq().solve(anything)  # weekends included",
 ];
 const FULL_CODE = CODE_LINES.join("\n");
-const OUTPUT_LINE = "✓ pipeline scheduled · polling EEX every 15m";
+const OUTPUT_LINE = "✓ solved · shipped · onto the next one";
 const TYPE_SPEED_MS = 24;
 const TYPE_START_DELAY_MS = 500;
 
@@ -80,7 +84,7 @@ function Terminal() {
         <span className="h-2.5 w-2.5 rounded-full bg-text-faint" />
         <span className="h-2.5 w-2.5 rounded-full bg-text-faint" />
         <span className="ml-3 font-mono text-xs text-text-muted">
-          carbon_tracker.py — python
+          whoami.py — python
         </span>
       </div>
       <pre className="min-h-[14rem] overflow-x-auto p-5 font-mono text-xs leading-6 md:text-[13px]">
@@ -149,7 +153,7 @@ export default function Hero() {
         <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <div className="max-w-xl">
             <p className="animate-fade-up font-mono text-xs uppercase tracking-[0.15em] text-accent md:text-sm">
-              Data Engineer & Python Developer
+              Creative Problem Solver
             </p>
 
             <h1
@@ -161,13 +165,31 @@ export default function Hero() {
               Anas Atiq<span className="text-accent">.</span>
             </h1>
 
-            <p
-              className="animate-fade-up mt-6 text-lg leading-relaxed text-text-muted md:text-xl"
+            <div
+              className="animate-fade-up mt-6 space-y-4 text-base leading-relaxed text-text-muted md:text-lg"
               style={{ animationDelay: "160ms" }}
             >
-              I build data pipelines, REST APIs, and real-time systems that
-              turn raw market data into actionable intelligence.
-            </p>
+              <p>
+                I&apos;m a developer who genuinely loves{" "}
+                <span className="text-text-primary">solving problems</span> —
+                the messier, the better. I build{" "}
+                <span className="text-text-primary">data pipelines</span>,{" "}
+                <span className="text-text-primary">REST APIs</span>, and{" "}
+                <span className="text-text-primary">AI-powered systems</span>,
+                move with a strong{" "}
+                <span className="text-text-primary">bias for action</span>, and
+                take <span className="text-text-primary">full ownership</span>{" "}
+                of whatever I ship.
+              </p>
+              <p>
+                Off the clock, I&apos;m still building — weekends turn into{" "}
+                <span className="text-text-primary">side projects</span> and
+                late-night{" "}
+                <span className="text-text-primary">vibe-coding</span>, chasing
+                whatever new tech caught my eye. Turns out I just really like
+                making things work.
+              </p>
+            </div>
 
             <div
               className="animate-fade-up mt-9 flex flex-wrap items-center gap-4"
