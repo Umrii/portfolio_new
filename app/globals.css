@@ -1,14 +1,35 @@
 @import "tailwindcss";
 
+/* Light theme is the default — a deeper green accent so it stays legible
+   on white, dark text, and a visible card border. Contrast-tuned so text
+   and boxes don't wash out. */
 :root {
+  --bg: #f4f4f0;
+  --surface: #ffffff;
+  --border: #d6d6cc;
+  --accent: #0a8043;
+  --accent-dim: #0a804322;
+  --accent-rgb: 10 128 67;
+  --alert-rgb: 200 45 45;
+  --text-primary: #1a1a1a;
+  --text-muted: #5f5f57;
+  --text-faint: #8a8a80;
+}
+
+/* Dark theme — opt-in via the toggle. The original "terminal precision"
+   palette with the electric-green accent. */
+:root[data-theme="dark"] {
   --bg: #0a0a0a;
   --surface: #111111;
   --border: #1f1f1f;
   --accent: #00ff87;
   --accent-dim: #00ff8722;
+  --accent-rgb: 0 255 135;
+  --alert-rgb: 255 96 96;
   --text-primary: #f0f0f0;
   --text-muted: #666666;
   --text-faint: #333333;
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -60,7 +81,7 @@
 }
 
 html {
-  color-scheme: dark;
+  color-scheme: light;
   scroll-behavior: smooth;
   scroll-padding-top: 4.5rem;
 }
@@ -68,6 +89,15 @@ html {
 body {
   background-color: var(--bg);
   color: var(--text-primary);
+}
+
+/* Smooth colour crossfade when toggling light/dark */
+@media (prefers-reduced-motion: no-preference) {
+  body,
+  body * {
+    transition: background-color 0.25s ease, border-color 0.25s ease,
+      color 0.25s ease, fill 0.25s ease;
+  }
 }
 
 ::selection {

@@ -165,9 +165,9 @@ const HEATMAP_ROWS: { label: string; scores: number[] }[] = [
 
 function cellColor(score: number): string {
   if (score < 0) return "var(--border)"; // gap / missing bar
-  if (score < 70) return "rgba(255, 96, 96, 0.55)"; // anomaly flagged
-  if (score < 85) return "rgba(0, 255, 135, 0.35)"; // medium
-  return "rgba(0, 255, 135, 0.8)"; // pass
+  if (score < 70) return "rgb(var(--alert-rgb) / 0.6)"; // anomaly flagged
+  if (score < 85) return "rgb(var(--accent-rgb) / 0.4)"; // medium
+  return "rgb(var(--accent-rgb) / 0.85)"; // pass
 }
 
 /* Stands in for the dashboard screenshot until the real PNG exists in
@@ -221,14 +221,14 @@ function QualityHeatmapPreview() {
         <span className="flex items-center gap-1.5 font-mono text-[10px] text-text-muted">
           <span
             className="h-2 w-2 rounded-[2px]"
-            style={{ backgroundColor: "rgba(0, 255, 135, 0.8)" }}
+            style={{ backgroundColor: "rgb(var(--accent-rgb) / 0.85)" }}
           />
           pass
         </span>
         <span className="flex items-center gap-1.5 font-mono text-[10px] text-text-muted">
           <span
             className="h-2 w-2 rounded-[2px]"
-            style={{ backgroundColor: "rgba(255, 96, 96, 0.55)" }}
+            style={{ backgroundColor: "rgb(var(--alert-rgb) / 0.6)" }}
           />
           alert
         </span>

@@ -1,26 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useCountUp } from "@/lib/useCountUp";
-
-const CODE_LINES = [
-  "# whoami",
-  "class AnasAtiq(Developer):",
-  '    role  = "Creative Problem Solver"',
-  '    loves = "turning chaos into clean systems"',
-  "",
-  "    def solve(self, problem):",
-  "        while problem.hard:",
-  "            self.learn()",
-  "            self.iterate()",
-  "        return self.ship(solution)",
-  "",
-  "AnasAtiq().solve(anything)  # weekends included",
-];
-const FULL_CODE = CODE_LINES.join("\n");
-const OUTPUT_LINE = "✓ solved · shipped · onto the next one";
-const TYPE_SPEED_MS = 24;
-const TYPE_START_DELAY_MS = 500;
 
 type Stat = { value: number; suffix: string; label: string };
 
@@ -31,88 +11,55 @@ const STATS: Stat[] = [
   { value: 2, suffix: "", label: "Live Projects" },
 ];
 
-function Cursor() {
-  return (
-    <span className="ml-0.5 inline-block h-[1.1em] w-[7px] translate-y-[3px] animate-blink bg-accent" />
-  );
-}
+type StatusItem = { icon: string; prefix?: string; value: string };
 
-function Terminal() {
-  const [typedChars, setTypedChars] = useState(0);
-  const [showOutput, setShowOutput] = useState(false);
-  const done = typedChars >= FULL_CODE.length;
+const STATUS_ITEMS: StatusItem[] = [
+  { icon: "📍", value: "Newcastle, UK" },
+  { icon: "🎓", value: "MSc Data Science — Yr 1/2" },
+  {
+    icon: "🔨",
+    prefix: "Building:",
+    value: "Market Data Reconciliation Pipeline",
+  },
+  { icon: "📚", prefix: "Studying:", value: "Data Engineering & AI" },
+];
 
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setTypedChars(FULL_CODE.length);
-      return;
-    }
-    let interval = 0;
-    const startDelay = window.setTimeout(() => {
-      interval = window.setInterval(() => {
-        setTypedChars((count) => {
-          if (count >= FULL_CODE.length) {
-            window.clearInterval(interval);
-            return count;
-          }
-          return count + 1;
-        });
-      }, TYPE_SPEED_MS);
-    }, TYPE_START_DELAY_MS);
-    return () => {
-      window.clearTimeout(startDelay);
-      window.clearInterval(interval);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!done) return;
-    const timeout = window.setTimeout(() => setShowOutput(true), 450);
-    return () => window.clearTimeout(timeout);
-  }, [done]);
-
-  const typedLines = FULL_CODE.slice(0, typedChars).split("\n");
-
+function CurrentlyCard() {
   return (
     <div
-      aria-hidden="true"
-      className="animate-fade-up overflow-hidden rounded-lg border border-border bg-surface shadow-[0_0_60px_var(--accent-dim)]"
+      className="animate-fade-up rounded-lg border border-border bg-surface p-6 shadow-[0_0_60px_var(--accent-dim)] md:p-7"
       style={{ animationDelay: "320ms" }}
     >
-      <div className="flex items-center gap-1.5 border-b border-border px-4 py-3">
-        <span className="h-2.5 w-2.5 rounded-full bg-text-faint" />
-        <span className="h-2.5 w-2.5 rounded-full bg-text-faint" />
-        <span className="h-2.5 w-2.5 rounded-full bg-text-faint" />
-        <span className="ml-3 font-mono text-xs text-text-muted">
-          whoami.py — python
+      <div className="flex items-center justify-between border-b border-border pb-4">
+        <div className="flex items-center gap-2.5">
+          <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-accent" />
+          </span>
+          <span className="font-mono text-xs font-bold uppercase tracking-[0.15em] text-accent">
+            Active
+          </span>
+        </div>
+        <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-text-faint">
+          {"// currently"}
         </span>
       </div>
-      <pre className="min-h-[14rem] overflow-x-auto p-5 font-mono text-xs leading-6 md:text-[13px]">
-        <code>
-          {typedLines.map((line, index) => {
-            const isLastLine = index === typedLines.length - 1;
-            return (
-              <div
-                key={index}
-                className={
-                  line.trimStart().startsWith("#")
-                    ? "text-text-muted"
-                    : "text-text-primary"
-                }
-              >
-                {line}
-                {isLastLine && !showOutput && <Cursor />}
-              </div>
-            );
-          })}
-          {showOutput && (
-            <div className="mt-2 text-accent">
-              {OUTPUT_LINE}
-              <Cursor />
-            </div>
-          )}
-        </code>
-      </pre>
+
+      <ul className="mt-5 space-y-4">
+        {STATUS_ITEMS.map((item) => (
+          <li key={item.value} className="flex items-start gap-3">
+            <span className="text-base leading-6" aria-hidden="true">
+              {item.icon}
+            </span>
+            <span className="font-mono text-sm leading-6">
+              {item.prefix && (
+                <span className="text-text-muted">{item.prefix} </span>
+              )}
+              <span className="text-text-primary">{item.value}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -217,7 +164,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <Terminal />
+          <CurrentlyCard />
         </div>
 
         <div className="mt-16 grid grid-cols-2 gap-x-6 gap-y-10 border-t border-border pt-10 md:mt-20 md:grid-cols-4">

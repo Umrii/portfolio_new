@@ -1,11 +1,11 @@
 "use client";
 
 import { Fragment, useEffect, useRef, useState } from "react";
+import ThemeToggle from "@/components/ThemeToggle";
 import { useScrollSpy } from "@/lib/useScrollSpy";
 
 const NAV_LINKS = [
   { id: "home", label: "HOME" },
-  { id: "about", label: "ABOUT" },
   { id: "projects", label: "PROJECTS" },
   { id: "skills", label: "SKILLS" },
   { id: "contact", label: "CONTACT" },
@@ -69,51 +69,58 @@ export default function Navbar() {
           anas atiq<span className="text-accent">.</span>
         </a>
 
-        <nav className="hidden items-center gap-5 md:flex" aria-label="Primary">
-          {NAV_LINKS.map((link, index) => (
-            <Fragment key={link.id}>
-              {index > 0 && (
-                <span className="select-none text-text-faint">·</span>
-              )}
-              <a
-                href={`#${link.id}`}
-                className={`relative font-mono text-xs tracking-[0.15em] transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-full after:origin-left after:bg-accent after:transition-transform after:duration-300 ${
-                  activeId === link.id
-                    ? "text-text-primary after:scale-x-100"
-                    : "text-text-muted after:scale-x-0 hover:text-text-primary"
-                }`}
-              >
-                {link.label}
-              </a>
-            </Fragment>
-          ))}
-        </nav>
+        <div className="flex items-center gap-3 md:gap-4">
+          <nav
+            className="hidden items-center gap-5 md:flex"
+            aria-label="Primary"
+          >
+            {NAV_LINKS.map((link, index) => (
+              <Fragment key={link.id}>
+                {index > 0 && (
+                  <span className="select-none text-text-faint">·</span>
+                )}
+                <a
+                  href={`#${link.id}`}
+                  className={`relative font-mono text-xs tracking-[0.15em] transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-full after:origin-left after:bg-accent after:transition-transform after:duration-300 ${
+                    activeId === link.id
+                      ? "text-text-primary after:scale-x-100"
+                      : "text-text-muted after:scale-x-0 hover:text-text-primary"
+                  }`}
+                >
+                  {link.label}
+                </a>
+              </Fragment>
+            ))}
+          </nav>
 
-        <button
-          type="button"
-          onClick={() => (menuOpen ? closeMenu() : openMenu())}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={menuOpen}
-          className="relative z-50 flex h-10 w-10 items-center justify-center md:hidden"
-        >
-          <span className="relative block h-3.5 w-5">
-            <span
-              className={`absolute left-0 top-0 block h-px w-full bg-text-primary transition-transform duration-300 ${
-                menuOpen ? "translate-y-[6.5px] rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`absolute left-0 top-[6.5px] block h-px w-full bg-text-primary transition-opacity duration-300 ${
-                menuOpen ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`absolute bottom-0 left-0 block h-px w-full bg-text-primary transition-transform duration-300 ${
-                menuOpen ? "-translate-y-[6.5px] -rotate-45" : ""
-              }`}
-            />
-          </span>
-        </button>
+          <ThemeToggle />
+
+          <button
+            type="button"
+            onClick={() => (menuOpen ? closeMenu() : openMenu())}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            className="relative z-50 flex h-10 w-10 items-center justify-center md:hidden"
+          >
+            <span className="relative block h-3.5 w-5">
+              <span
+                className={`absolute left-0 top-0 block h-px w-full bg-text-primary transition-transform duration-300 ${
+                  menuOpen ? "translate-y-[6.5px] rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`absolute left-0 top-[6.5px] block h-px w-full bg-text-primary transition-opacity duration-300 ${
+                  menuOpen ? "opacity-0" : ""
+                }`}
+              />
+              <span
+                className={`absolute bottom-0 left-0 block h-px w-full bg-text-primary transition-transform duration-300 ${
+                  menuOpen ? "-translate-y-[6.5px] -rotate-45" : ""
+                }`}
+              />
+            </span>
+          </button>
+        </div>
       </div>
 
       {/* Mobile full-screen overlay */}
