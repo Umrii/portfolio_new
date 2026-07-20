@@ -156,7 +156,7 @@ export default function Hero() {
               </a>
               <a
                 href="/Resume.pdf"
-                download
+                download="Muhammad Atiq CV.pdf"
                 className="inline-flex items-center rounded-lg border border-border px-6 py-3 font-mono text-sm text-text-primary transition-colors hover:border-accent hover:text-accent"
               >
                 Download CV
