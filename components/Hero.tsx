@@ -1,26 +1,9 @@
-"use client";
-
-import { useCountUp } from "@/lib/useCountUp";
-
-type Stat = { value: number; suffix: string; label: string };
-
-const STATS: Stat[] = [
-  { value: 2, suffix: "+", label: "Years Exp" },
-  { value: 10, suffix: "+", label: "APIs Built" },
-  { value: 1000, suffix: "+", label: "Daily Reqs" },
-  { value: 2, suffix: "", label: "Live Projects" },
-];
-
 type StatusItem = { icon: string; prefix?: string; value: string };
 
 const STATUS_ITEMS: StatusItem[] = [
   { icon: "📍", value: "Newcastle, UK" },
   { icon: "🎓", value: "MSc Data Science — Yr 1/2" },
-  {
-    icon: "🔨",
-    prefix: "Building:",
-    value: "Market Data Reconciliation Pipeline",
-  },
+  { icon: "🔨", prefix: "Building:", value: "Price Pantry" },
   { icon: "📚", prefix: "Studying:", value: "Data Engineering & AI" },
 ];
 
@@ -60,26 +43,6 @@ function CurrentlyCard() {
           </li>
         ))}
       </ul>
-    </div>
-  );
-}
-
-function StatItem({ stat, delay }: { stat: Stat; delay: number }) {
-  const { ref, value } = useCountUp<HTMLDivElement>(stat.value);
-
-  return (
-    <div
-      ref={ref}
-      className="animate-fade-up"
-      style={{ animationDelay: `${delay}ms` }}
-    >
-      <p className="font-mono text-3xl font-bold text-text-primary md:text-4xl">
-        {value}
-        {stat.suffix && <span className="text-accent">{stat.suffix}</span>}
-      </p>
-      <p className="mt-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-text-muted">
-        {stat.label}
-      </p>
     </div>
   );
 }
@@ -165,12 +128,6 @@ export default function Hero() {
           </div>
 
           <CurrentlyCard />
-        </div>
-
-        <div className="mt-16 grid grid-cols-2 gap-x-6 gap-y-10 border-t border-border pt-10 md:mt-20 md:grid-cols-4">
-          {STATS.map((stat, index) => (
-            <StatItem key={stat.label} stat={stat} delay={400 + index * 80} />
-          ))}
         </div>
       </div>
     </section>

@@ -23,7 +23,7 @@ const ENTRIES: TimelineEntry[] = [
     period: "Mar–Sept 2025",
     kind: "work",
     title: "Python Developer",
-    org: "Hoboetech, Lahore",
+    org: "WatchMyCompetitor, London (Remote)",
     details: [
       "Built scalable data processing pipelines.",
       "Implemented fault-handling and retry logic for distributed workflows.",
@@ -37,6 +37,16 @@ const ENTRIES: TimelineEntry[] = [
     details: [
       "10+ production REST APIs · FastAPI · 1000+ daily requests · 12% latency reduction",
       "Async processing: Celery + Redis",
+    ],
+  },
+  {
+    period: "Jun 2022–Jun 2023",
+    kind: "work",
+    title: "Software Engineer Intern",
+    org: "Bitsclan IT Solutions, Lahore",
+    details: [
+      "Built 2 full-stack prototype web apps — React.js UIs with reusable components, Node.js/Express + MongoDB REST APIs.",
+      "Sped up early-stage prototyping and contributed to code reviews and debugging.",
     ],
   },
   {
