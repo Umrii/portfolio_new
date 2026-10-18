@@ -29,11 +29,11 @@ export const metadata: Metadata = {
     siteName: "Anas Atiq Portfolio",
     title: "Anas Atiq | Data Engineer",
     description:
-      "Building data pipelines at the intersection of energy markets and automation.",
+      "Data Engineer and Python developer building data pipelines, REST APIs, and real-time systems at the intersection of energy markets and automation.",
     locale: "en_GB",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: OG_IMAGE_ALT,
@@ -44,8 +44,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Anas Atiq | Data Engineer",
     description:
-      "Building data pipelines at the intersection of energy markets and automation.",
-    images: [{ url: "/og-image.png", alt: OG_IMAGE_ALT }],
+      "Data Engineer and Python developer building data pipelines, REST APIs, and real-time systems at the intersection of energy markets and automation.",
+    images: [{ url: "/og.png", alt: OG_IMAGE_ALT }],
   },
 };
 
