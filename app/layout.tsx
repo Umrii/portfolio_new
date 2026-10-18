@@ -15,27 +15,37 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const OG_IMAGE_ALT =
+  "Anas Atiq — Python Developer | AI/ML. Building data pipelines at the intersection of energy markets and automation.";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://anasatiq.com"),
-  title: "Anas Atiq — Data Engineer & Python Developer | Newcastle, UK",
+  title: "Anas Atiq | Data Engineer",
   description:
     "Anas Atiq — Data Engineer and MSc Data Science student at Northumbria University. Specialising in FastAPI, Python pipelines, and real-time data systems. Open to UK roles.",
   openGraph: {
-    title: "Anas Atiq — Data Engineer",
+    type: "website",
+    url: "https://anasatiq.com/",
+    siteName: "Anas Atiq Portfolio",
+    title: "Anas Atiq | Data Engineer",
     description:
       "Building data pipelines at the intersection of energy markets and automation.",
-    url: "https://anasatiq.com",
-    siteName: "Anas Atiq",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
     locale: "en_GB",
-    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: OG_IMAGE_ALT,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Anas Atiq — Data Engineer",
+    title: "Anas Atiq | Data Engineer",
     description:
       "Building data pipelines at the intersection of energy markets and automation.",
-    images: ["/og-image.png"],
+    images: [{ url: "/og-image.png", alt: OG_IMAGE_ALT }],
   },
 };
 
